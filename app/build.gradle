@@ -1,0 +1,87 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
+    id "androidx.navigation.safeargs.kotlin"
+}
+
+android {
+    namespace 'com.maverick.baseproject'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.maverick.baseproject"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "$VersionName"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$KotlinVersion"
+    implementation "androidx.appcompat:appcompat:$AndroidXAppCompatVersion"
+    implementation "com.google.android.material:material:$AndroidMaterialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$AndroidXConstraintLayoutVersion"
+
+    testImplementation "junit:junit:$JunitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$AndroidXEspressoJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$AndroidXTestEspressoCoreVersion"
+
+    // Nav-Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$NavigationComponent"
+    implementation "androidx.navigation:navigation-ui-ktx:$NavigationComponent"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$Glide"
+
+    // Dagger-Hilt
+    implementation "com.google.dagger:hilt-android:$DaggerHiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$DaggerHiltVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$CoroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$CoroutinesVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$CoroutinesVersion"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    // Retrofit + GSON
+    implementation "com.squareup.retrofit2:retrofit:$RetrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$RetrofitVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:$RoomVersion"
+    implementation "androidx.room:room-ktx:$RoomVersion"
+    kapt "androidx.room:room-compiler:$RoomVersion"
+    implementation "androidx.room:room-paging:$RoomVersion"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
+    //by viewModels() delegate function
+    implementation "androidx.fragment:fragment-ktx:1.5.3"
+
+}
