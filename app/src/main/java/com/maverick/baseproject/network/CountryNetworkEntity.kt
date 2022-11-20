@@ -27,14 +27,14 @@ data class Flags(
 
     @SerializedName("png")
     @Expose
-    var png:String? = null,
+    var png: String? = null,
 
-)
+    )
 
 data class Currencies(
 
     @SerializedName("symbol")
     @Expose
-    var symbol:String? = null,
+    var symbol: String? = null,
 
-)
+    )

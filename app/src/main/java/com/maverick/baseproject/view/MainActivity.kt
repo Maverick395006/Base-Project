@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.maverick.baseproject.databinding.ActivityMainBinding
 import com.maverick.baseproject.model.Country
 import com.maverick.baseproject.util.DataState
+import com.maverick.baseproject.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,14 +32,17 @@ class MainActivity : AppCompatActivity() {
                 is DataState.Success<List<Country>> -> {
                     displayProgressBar(false)
                     appendCountryTitles(dataState.data)
+                    showToast("Successfully data fetched", true)
                 }
                 is DataState.Error -> {
                     displayProgressBar(false)
                     displayError(dataState.exception.message)
+                    showToast("There is Some Error", true)
                 }
                 is DataState.Loading -> {
                     displayProgressBar(true)
                     binding.tvData.text = "Loading..."
+                    showToast("Processing...", false)
                 }
             }
         }

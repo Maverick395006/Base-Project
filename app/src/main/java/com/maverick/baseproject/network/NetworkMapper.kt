@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class NetworkMapper
 @Inject
-constructor() : EntityMapper<CountryNetworkEntity,Country> {
+constructor() : EntityMapper<CountryNetworkEntity, Country> {
 
     override fun mapFromEntity(entity: CountryNetworkEntity): Country {
         return Country(

@@ -23,7 +23,7 @@ class MainViewModel @Inject constructor(
 
     fun setStateEvent(mainStateEvent: MainStateEvent) {
         viewModelScope.launch {
-            when(mainStateEvent) {
+            when (mainStateEvent) {
                 MainStateEvent.GetCountryList -> {
                     mainRepository.getCountryList()
                         .onEach { dataState ->
